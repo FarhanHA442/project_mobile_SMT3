@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project/dashboard/dashboard.dart';
 import 'package:project/fonts/fonts.dart';
+import 'package:project/register/register.dart';
 
-void main() {
-  runApp(Login());
-}
 
 class Login extends StatelessWidget {
   @override
@@ -102,24 +101,27 @@ class LoginPage extends StatelessWidget{
                         child: Icon(Icons
                             .visibility_outlined)))),
                       ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      height: 35,
-                      margin: const EdgeInsets.symmetric(horizontal: 50),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromRGBO(68, 106, 70, 1),
+                      SizedBox(
+                        height: 30,
                       ),
-                      child: Center(
-                        child: Text(
-                          "Masuk",
-                          style: 
-                            Signika. copyWith(fontSize: 16,fontWeight: FontWeight.bold, color: Colors.white),
+                      Container(
+                        width: 200,
+                        height: 45,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromRGBO(68, 106, 70, 1),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
+                          }, 
+                          child: Text(
+                            "Masuk",
+                            style: 
+                              Signika. copyWith(fontSize: 16,fontWeight: FontWeight.bold, color: Colors.white),
+                          ),
                         ),
                       ),
-                    ),
+                    
                     SizedBox(
                       height: 5,
                     ),
@@ -131,7 +133,9 @@ class LoginPage extends StatelessWidget{
                         style: 
                             Signika. copyWith(fontSize: 12, color: Colors.black),
                         ),
-                      TextButton(onPressed: () {}, child: Text("Daftar",
+                      TextButton(onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
+                      }, child: Text("Daftar",
                       style: 
                         Signika. copyWith(fontSize: 12,fontWeight: FontWeight.bold, color: Color.fromRGBO(19, 52, 22, 1)),
                       )),

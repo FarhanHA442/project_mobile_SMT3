@@ -40,11 +40,11 @@ class _NavigationBarState extends State<NavigationBar> {
         color: Colors.black,
         activeColor: Colors.black,
         tabBackgroundColor: Color.fromRGBO(238, 242, 230, 1),
-        gap: 8,
+        gap: 10,
         onTabChange: (index) {
           print(index);
         },
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(14),
         tabs: const [
           GButton(
             icon: Icons.dashboard,
