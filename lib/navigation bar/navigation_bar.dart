@@ -6,7 +6,7 @@ void main() {
   runApp(Navigation());
 }
 
-class Navigation extends StatelessWidget{
+class Navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,9 +23,8 @@ class NavigationBar extends StatefulWidget {
 }
 
 class _NavigationBarState extends State<NavigationBar> {
-  int index = 0;
-  final screens = [
-     Dashboard(),
+  List pages = [
+    Dashboard(),
   ];
 
   @override
@@ -36,28 +35,28 @@ class _NavigationBarState extends State<NavigationBar> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
           child: GNav(
-        backgroundColor: Color.fromRGBO(61, 131, 97, 1),
-        color: Colors.black,
-        activeColor: Colors.black,
-        tabBackgroundColor: Color.fromRGBO(238, 242, 230, 1),
-        gap: 10,
-        onTabChange: (index) {
-          print(index);
-        },
-        padding: EdgeInsets.all(14),
-        tabs: const [
-          GButton(
-            icon: Icons.dashboard,
-            text: 'Dashboard',
-            ),
-          GButton(
-            icon: Icons.manage_accounts,
-            text: 'Akun',
-            ),
-        ],
-      ),
+            backgroundColor: Color.fromRGBO(61, 131, 97, 1),
+            color: Colors.black,
+            activeColor: Colors.black,
+            tabBackgroundColor: Color.fromRGBO(238, 242, 230, 1),
+            gap: 10,
+            onTabChange: (index) {
+              print(index);
+            },
+            padding: EdgeInsets.all(14),
+            tabs: const [
+              GButton(
+                icon: Icons.dashboard,
+                text: 'Dashboard',
+              ),
+              GButton(
+                icon: Icons.manage_accounts,
+                text: 'Akun',
+              ),
+            ],
+          ),
         ),
-    ),
+      ),
     );
   }
 }
