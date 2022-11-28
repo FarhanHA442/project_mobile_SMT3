@@ -80,11 +80,8 @@ class DashboardPage extends StatelessWidget {
                               children: <Widget>[
                                 Row(
                                   children: [
-                                    FittedBox(
-                                      child: Image.asset(
-                                          'assets/foto sekolah dashboard.png'),
-                                      fit: BoxFit.fill,
-                                    ),
+                                    Image.asset(
+                                        'assets/foto sekolah dashboard.png'),
                                     Expanded(
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
@@ -97,7 +94,7 @@ class DashboardPage extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -123,11 +120,8 @@ class DashboardPage extends StatelessWidget {
                               children: <Widget>[
                                 Row(
                                   children: [
-                                    FittedBox(
-                                      child: Image.asset(
-                                          'assets/foto sekolah dashboard.png'),
-                                      fit: BoxFit.fill,
-                                    ),
+                                    Image.asset(
+                                        'assets/foto sekolah dashboard.png'),
                                     Expanded(
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
@@ -140,50 +134,7 @@ class DashboardPage extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          margin: EdgeInsets.only(right: 20,),
-                          height: categoryHeight,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 0)),
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Row(
-                                  children: [
-                                    FittedBox(
-                                      child: Image.asset(
-                                          'assets/foto sekolah dashboard.png'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                    Expanded(
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.vertical,
-                                        child: Text(
-                                          'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                          style: Signika.copyWith(
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -209,11 +160,8 @@ class DashboardPage extends StatelessWidget {
                               children: <Widget>[
                                 Row(
                                   children: [
-                                    FittedBox(
-                                      child: Image.asset(
-                                          'assets/foto sekolah dashboard.png'),
-                                      fit: BoxFit.fill,
-                                    ),
+                                    Image.asset(
+                                        'assets/foto sekolah dashboard.png'),
                                     Expanded(
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
@@ -226,7 +174,7 @@ class DashboardPage extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -252,11 +200,8 @@ class DashboardPage extends StatelessWidget {
                               children: <Widget>[
                                 Row(
                                   children: [
-                                    FittedBox(
-                                      child: Image.asset(
-                                          'assets/foto sekolah dashboard.png'),
-                                      fit: BoxFit.fill,
-                                    ),
+                                    Image.asset(
+                                        'assets/foto sekolah dashboard.png'),
                                     Expanded(
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
@@ -269,7 +214,47 @@ class DashboardPage extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          margin: EdgeInsets.only(right: 20),
+                          height: categoryHeight,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0)),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black,
+                                    blurRadius: 2,
+                                    offset: Offset(0, 0)),
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                        'assets/foto sekolah dashboard.png'),
+                                    Expanded(
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.vertical,
+                                        child: Text(
+                                          'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+                                          style: Signika.copyWith(
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -297,14 +282,7 @@ class DashboardPage extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(190),
-                    child: ListView(
-                      children: [
-                        Container( margin: EdgeInsets.only(left: 190, right: 190),
-                          
-                        ),
-                      ],
-                    ),
-                  ), 
+                  ),
                 ),
               ),
             ],
