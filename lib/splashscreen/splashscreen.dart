@@ -71,7 +71,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                 height: 20,
               ),
               Text(
-                "Laman ini diperuntukkan untuk \n mengelola pendataan alumni yang \n dilaksanakan oleh SMA Darus Sholah.",
+                "Aplikasi ini diperuntukkan untuk \n mengelola pendataan alumni yang \n dilaksanakan oleh SMA Darus Sholah.",
                 style: Signika.copyWith(fontSize: 14, color: Colors.white),
                 textAlign: TextAlign.center,
               ),

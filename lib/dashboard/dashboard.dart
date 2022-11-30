@@ -172,9 +172,7 @@ class DashboardPage extends StatelessWidget {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: 10,
-              // ),
+              //jarak berita baru dan berita lama
               Expanded(
                 child: Container(
                   margin: EdgeInsets.only(right: 20, left: 20),
@@ -202,12 +200,9 @@ class DashboardPage extends StatelessWidget {
                           children: [
                             Container(
                               width: MediaQuery.of(context).size.width * 0.9,
-                              margin: EdgeInsets.only(right: 20),
                               height: categoryHeight,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black,
@@ -233,21 +228,26 @@ class DashboardPage extends StatelessWidget {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text("Tanggal"),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 20,
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.9,
-                              margin: EdgeInsets.only(right: 20),
                               height: categoryHeight,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black,
@@ -273,21 +273,26 @@ class DashboardPage extends StatelessWidget {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text("Tanggal"),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 20,
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.9,
-                              margin: EdgeInsets.only(right: 20),
                               height: categoryHeight,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black,
@@ -313,21 +318,26 @@ class DashboardPage extends StatelessWidget {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text("Tanggal"),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 20,
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.9,
-                              margin: EdgeInsets.only(right: 20),
                               height: categoryHeight,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black,
@@ -353,21 +363,26 @@ class DashboardPage extends StatelessWidget {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text("Tanggal"),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 20,
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.9,
-                              margin: EdgeInsets.only(right: 20),
                               height: categoryHeight,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0)),
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black,
@@ -391,6 +406,14 @@ class DashboardPage extends StatelessWidget {
                                                 color: Colors.black),
                                           ),
                                         ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text("Tanggal"),
                                       ],
                                     ),
                                   ],
