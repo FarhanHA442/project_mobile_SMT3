@@ -212,7 +212,7 @@ class DashboardPage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     Row(
                                       children: [
@@ -233,7 +233,12 @@ class DashboardPage extends StatelessWidget {
                                     ),
                                     Column(
                                       children: [
-                                        Text("Tanggal"),
+                                        Text(
+                                          "12-12-2012",
+                                          style: Signika.copyWith(
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -257,7 +262,7 @@ class DashboardPage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     Row(
                                       children: [
@@ -278,7 +283,12 @@ class DashboardPage extends StatelessWidget {
                                     ),
                                     Column(
                                       children: [
-                                        Text("Tanggal"),
+                                        Text(
+                                          "12-12-2012",
+                                          style: Signika.copyWith(
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -302,7 +312,7 @@ class DashboardPage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     Row(
                                       children: [
@@ -323,7 +333,12 @@ class DashboardPage extends StatelessWidget {
                                     ),
                                     Column(
                                       children: [
-                                        Text("Tanggal"),
+                                        Text(
+                                          "12-12-2012",
+                                          style: Signika.copyWith(
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -347,7 +362,7 @@ class DashboardPage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     Row(
                                       children: [
@@ -368,7 +383,12 @@ class DashboardPage extends StatelessWidget {
                                     ),
                                     Column(
                                       children: [
-                                        Text("Tanggal"),
+                                        Text(
+                                          "12-12-2012",
+                                          style: Signika.copyWith(
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -392,7 +412,7 @@ class DashboardPage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     Row(
                                       children: [
@@ -413,7 +433,12 @@ class DashboardPage extends StatelessWidget {
                                     ),
                                     Column(
                                       children: [
-                                        Text("Tanggal"),
+                                        Text(
+                                          "12-12-2012",
+                                          style: Signika.copyWith(
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        ),
                                       ],
                                     ),
                                   ],
