@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/fonts/fonts.dart';
-import 'package:project/navigation bar/navigation_bar.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 class Dashboard extends StatelessWidget {
   @override

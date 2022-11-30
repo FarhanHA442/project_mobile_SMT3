@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/dashboard/dashboard.dart';
 import 'package:project/fonts/fonts.dart';
+import 'package:project/navigation%20bar/navigation_bar.dart';
 import 'package:project/register/register.dart';
 
 class Login extends StatelessWidget {
@@ -124,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Dashboard()));
+                                    builder: (context) => Navigation()));
                           },
                           child: Text(
                             "Masuk",
