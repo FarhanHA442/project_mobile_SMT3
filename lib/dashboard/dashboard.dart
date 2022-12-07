@@ -65,11 +65,12 @@ class DashboardPage extends StatelessWidget {
                                 Container(
                                   width: 200,
                                   child: Image.asset(
-                                      "assets/foto sekolah dashboard.png"),
+                                      "assets/foto sekolah dashboard.png",
+                                      fit: BoxFit.fill,),
                                 ),
-                                SizedBox(
-                                  width: 20,
-                                ),
+                                // SizedBox(
+                                //   width: 10,
+                                // ),
                                 Expanded(
                                   child: Container(
                                     margin: EdgeInsets.only(top: 20),
@@ -138,11 +139,12 @@ class DashboardPage extends StatelessWidget {
                                     Container(
                                       width: 200,
                                       child: Image.asset(
-                                          "assets/foto sekolah dashboard.png"),
+                                          "assets/foto sekolah dashboard.png",
+                                          fit: BoxFit.fill,),
                                     ),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
+                                    // SizedBox(
+                                    //   width: 20,
+                                    // ),
                                     Expanded(
                                       child: Container(
                                         margin: EdgeInsets.only(top: 20),
@@ -161,6 +163,7 @@ class DashboardPage extends StatelessWidget {
                                               height: 10,
                                             ),
                                             Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
                                               children: <Widget>[
                                                 Icon(
                                                   Icons.calendar_today,
