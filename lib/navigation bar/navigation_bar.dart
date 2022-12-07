@@ -1,52 +1,106 @@
 import 'package:flutter/material.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:project/dashboard/dashboard.dart';
 import 'package:project/manajemen akun/manajemen_akun.dart';
 
-void main() {
-  runApp(Navigation());
+class NavigationBarFirst extends StatefulWidget {
+  const NavigationBarFirst({Key? key}) : super(key: key);
+
+  @override
+  State<NavigationBarFirst> createState() => _NavigationBarFirstState();
 }
 
-class Navigation extends StatelessWidget {
+class _NavigationBarFirstState extends State<NavigationBarFirst> {
+  int _activePageIndex = 0;
+  final PageController _pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: NavigationBar(),
+    return Scaffold(
+      body: PageView(
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              _activePageIndex = index;
+            });
+          },
+          children: [
+            DashboardPage(),
+            ManajemenAkunPage(),
+          ]),
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 50,
+        color: Color.fromRGBO(61, 131, 97, 1),
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Color.fromRGBO(61, 131, 97, 1),
+        index: _activePageIndex,
+        onTap: (index) {
+          _pageController.animateToPage(index,
+              duration: Duration(microseconds: 600), curve: Curves.ease);
+        },
+        items: [
+          Icon(
+            Icons.space_dashboard_outlined,
+            color: Colors.white,
+            size: 30,
+          ),
+          Icon(
+            Icons.manage_accounts_outlined,
+            color: Colors.white,
+            size: 30,
+          ),
+        ],
+      ),
     );
   }
 }
 
-class NavigationBar extends StatefulWidget {
-  const NavigationBar({Key? key}) : super(key: key);
+class NavigationBarSecond extends StatefulWidget {
+  const NavigationBarSecond({Key? key}) : super(key: key);
 
   @override
-  State<NavigationBar> createState() => _NavigationBarState();
+  State<NavigationBarSecond> createState() => _NavigationBarSecondState();
 }
 
-class _NavigationBarState extends State<NavigationBar> {
-  int index = 0;
-  final screens = [
-    Dashboard(),
-    ManajemenAkun(),
-  ];
-
+class _NavigationBarSecondState extends State<NavigationBarSecond> {
+  int _activePageIndex = 1;
+  final PageController _pageController = PageController(initialPage: 1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[index],
-      bottomNavigationBar: ConvexAppBar(
-          curveSize: 70,
-          backgroundColor: Color.fromRGBO(61, 131, 97, 1),
-          activeColor: Colors.white,
-          color: Colors.white,
-          items: const [
-            TabItem(icon: Icons.dashboard, title: 'Dashboard'),
-            TabItem(icon: Icons.manage_accounts, title: 'Akun'),
-          ],
-          // initialActiveIndex: 0,
-          onTap: (int i) {
-            setState(() => index = i);
-          }),
+      body: PageView(
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              _activePageIndex = index;
+            });
+          },
+          children: [
+            DashboardPage(),
+            ManajemenAkunPage(),
+          ]),
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 50,
+        color: Color.fromRGBO(61, 131, 97, 1),
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Color.fromRGBO(61, 131, 97, 1),
+        index: _activePageIndex,
+        onTap: (index) {
+          _pageController.animateToPage(index,
+              duration: Duration(microseconds: 600), curve: Curves.ease);
+        },
+        items: [
+          Icon(
+            Icons.space_dashboard_outlined,
+            color: Colors.white,
+            size: 30,
+          ),
+          Icon(
+            Icons.manage_accounts_outlined,
+            color: Colors.white,
+            size: 30,
+          ),
+        ],
+      ),
     );
   }
 }

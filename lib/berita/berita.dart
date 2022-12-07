@@ -1,84 +1,105 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project/dashboard/dashboard.dart';
 import 'package:project/fonts/fonts.dart';
-
-void main() {
-  runApp(Berita());
-}
-
-class Berita extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BeritaPage(),
-    );
-  }
-}
+import 'package:project/navigation%20bar/navigation_bar.dart';
 
 class BeritaPage extends StatelessWidget {
-@override
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp (
-    home: Scaffold(
+    final double categoryHeight =
+        MediaQuery.of(context).size.height * 0.30 - 50;
+
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => NavigationBarFirst()));
+          },
+          icon: Icon(
+            Icons.arrow_back_outlined,
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: true,
+        title: Text("Detail Berita",
+            style: Signika.copyWith(
+              fontSize: 24,
+              color: Colors.black,
+            )),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Container(
         color: Colors.white,
-          width: double.infinity,
-          height: double.infinity,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 30,
-          ),
-          Text(
-            "PENDASIAL",
-            style: 
-                Signika. copyWith(fontSize: 25, color: Colors.black),
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 100,
             ),
-          Container(
-            height: 1,
-            width: 336,
-            color: Colors.black54,
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              alignment: Alignment.topLeft,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Come on Alumni 2021",
+                        style: Signika.copyWith(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                  ]),
             ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Text(
-                "Come On Alumni 2021",
-                style: 
-                Signika. copyWith(fontSize: 25, color: Colors.black),
+            SizedBox(height: 20),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              child: FittedBox(
+                fit: BoxFit.fill,
+                alignment: Alignment.topLeft,
+                child: Row(
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset('assets/foto sekolah dashboard.png',
+                            width: MediaQuery.of(context).size.width,
+                            fit: BoxFit.fill),
+                      ],
+                    ),
+                  ],
                 ),
-          SizedBox(
-            height: 10,
-          ),
-            ],
-          ),
-          Row(
-            children: [
-              Image.asset(
-              'assets/foto sekolah dashboard.png',
-              width: 186,
-              height: 180,           
+              ),
             ),
-            ],
-          ),
-          Row(
-            children: [
-              Text(
-                "A new way to find colleges, alumni and friends. \n"
-                "\nHigh school alumni is a great way to connect with graduates\nof your almamater.\nThe alumni website will allow you to create your own page,\nincluding pictures and a biography of your life since graduation.\n"
-                "\nHigh School alumni are free to access their contacts, grades,\nand more.",
-                style: 
-                Signika. copyWith(fontSize: 14, color: Colors.black),
+            SizedBox(
+              height: 10,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: categoryHeight,
+                decoration: BoxDecoration(
+                  color: Colors.white,
                 ),
-            ],
-          ),
-        ],
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+                        style:
+                            Signika.copyWith(fontSize: 16, color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-      ),
-    ),
     );
   }
 }

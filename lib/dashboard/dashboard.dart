@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project/berita/berita.dart';
 import 'package:project/fonts/fonts.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-
-class Dashboard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DashboardPage(),
-    );
-  }
-}
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -19,151 +9,176 @@ class DashboardPage extends StatelessWidget {
     final double categoryHeight =
         MediaQuery.of(context).size.height * 0.30 - 50;
 
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          color: Colors.white,
-          width: double.infinity,
-          height: double.infinity,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              "PENDASIAL",
+              style: Signika.copyWith(fontSize: 25, color: Colors.black),
+            ),
+            Container(
+              height: 1,
+              width: 376,
+              color: Colors.black54,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              alignment: Alignment.topLeft,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Berita",
+                        style: Signika.copyWith(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                  ]),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                alignment: Alignment.topCenter,
+                child: Row(
+                  children: [
+                    InkWell(
+                      // onTap: onTap,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        margin: EdgeInsets.only(right: 20),
+                        height: categoryHeight,
+                        child: Card(
+                          child: Container(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  width: 200,
+                                  child: Image.asset(
+                                      "assets/foto sekolah dashboard.png"),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 20),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        Text(
+                                          "Judul",
+                                          style: Signika.copyWith(
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text(
-                "PENDASIAL",
-                style: Signika.copyWith(fontSize: 25, color: Colors.black),
-              ),
-              Container(
-                height: 1,
-                width: 376,
-                color: Colors.black54,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  Text(
-                    "Berita",
-                    style: Signika.copyWith(fontSize: 25, color: Colors.black),
-                  ),
-                ],
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  child: FittedBox(
-                    fit: BoxFit.fill,
+            ),
+            //jarak berita baru dan berita lama
+            Expanded(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                margin: EdgeInsets.only(
+                  right: 20,
+                  left: 20,
+                ),
+                height: categoryHeight,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black54,
+                      blurRadius: 10,
+                    ),
+                  ],
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                     alignment: Alignment.topCenter,
-                    child: Row(
+                    child: Column(
                       children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          margin: EdgeInsets.only(right: 20),
-                          height: categoryHeight,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 0)),
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                        'assets/foto sekolah dashboard.png'),
+                        InkWell(
+                          // onTap: onTap,
+                          child: Container(
+                            // margin: EdgeInsets.all(10),
+                            child: Card(
+                              child: Container(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      width: 200,
+                                      child: Image.asset(
+                                          "assets/foto sekolah dashboard.png"),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
                                     Expanded(
-                                      child: Text(
-                                        'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                        style: Signika.copyWith(
-                                            fontSize: 15, color: Colors.black),
+                                      child: Container(
+                                        margin: EdgeInsets.only(top: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              "Judul",
+                                              style: Signika.copyWith(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.calendar_today,
+                                                  size: 12,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text("Tanggal"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          margin: EdgeInsets.only(right: 20),
-                          height: categoryHeight,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 0)),
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                        'assets/foto sekolah dashboard.png'),
-                                    Expanded(
-                                      child: Text(
-                                        'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                        style: Signika.copyWith(
-                                            fontSize: 15, color: Colors.black),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          margin: EdgeInsets.only(right: 20),
-                          height: categoryHeight,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0)),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 0)),
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                        'assets/foto sekolah dashboard.png'),
-                                    Expanded(
-                                      child: Text(
-                                        'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                        style: Signika.copyWith(
-                                            fontSize: 15, color: Colors.black),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
@@ -172,288 +187,8 @@ class DashboardPage extends StatelessWidget {
                   ),
                 ),
               ),
-              //jarak berita baru dan berita lama
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(right: 20, left: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black54,
-                        blurRadius: 10,
-                      ),
-                    ],
-                  ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                      child: FittedBox(
-                        fit: BoxFit.fill,
-                        alignment: Alignment.topCenter,
-                        child: Column(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: categoryHeight,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black,
-                                        blurRadius: 2,
-                                        offset: Offset(0, 0)),
-                                  ]),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: <Widget>[
-                                    Row(
-                                      children: [
-                                        Image.asset(
-                                            'assets/foto sekolah dashboard.png'),
-                                        Expanded(
-                                          child: Text(
-                                            'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                            style: Signika.copyWith(
-                                                fontSize: 15,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "12-12-2012",
-                                          style: Signika.copyWith(
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: categoryHeight,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black,
-                                        blurRadius: 2,
-                                        offset: Offset(0, 0)),
-                                  ]),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: <Widget>[
-                                    Row(
-                                      children: [
-                                        Image.asset(
-                                            'assets/foto sekolah dashboard.png'),
-                                        Expanded(
-                                          child: Text(
-                                            'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                            style: Signika.copyWith(
-                                                fontSize: 15,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "12-12-2012",
-                                          style: Signika.copyWith(
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: categoryHeight,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black,
-                                        blurRadius: 2,
-                                        offset: Offset(0, 0)),
-                                  ]),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: <Widget>[
-                                    Row(
-                                      children: [
-                                        Image.asset(
-                                            'assets/foto sekolah dashboard.png'),
-                                        Expanded(
-                                          child: Text(
-                                            'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                            style: Signika.copyWith(
-                                                fontSize: 15,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "12-12-2012",
-                                          style: Signika.copyWith(
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: categoryHeight,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black,
-                                        blurRadius: 2,
-                                        offset: Offset(0, 0)),
-                                  ]),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: <Widget>[
-                                    Row(
-                                      children: [
-                                        Image.asset(
-                                            'assets/foto sekolah dashboard.png'),
-                                        Expanded(
-                                          child: Text(
-                                            'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                            style: Signika.copyWith(
-                                                fontSize: 15,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "12-12-2012",
-                                          style: Signika.copyWith(
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: categoryHeight,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black,
-                                        blurRadius: 2,
-                                        offset: Offset(0, 0)),
-                                  ]),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: <Widget>[
-                                    Row(
-                                      children: [
-                                        Image.asset(
-                                            'assets/foto sekolah dashboard.png'),
-                                        Expanded(
-                                          child: Text(
-                                            'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                                            style: Signika.copyWith(
-                                                fontSize: 15,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "12-12-2012",
-                                          style: Signika.copyWith(
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

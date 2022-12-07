@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:project/fonts/fonts.dart';
 import 'dart:async';
 import 'package:project/login/login.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(SplashScreen());
@@ -11,6 +12,10 @@ void main() {
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       home: SplashScreenPage(),
     );
@@ -29,7 +34,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     Timer(
         Duration(seconds: 5),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Login())));
+            context, MaterialPageRoute(builder: (context) => LoginPage())));
   }
 
   @override
@@ -68,7 +73,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: 20,
+                height: 50,
               ),
               Text(
                 "Aplikasi ini diperuntukkan untuk \n mengelola pendataan alumni yang \n dilaksanakan oleh SMA Darus Sholah.",
