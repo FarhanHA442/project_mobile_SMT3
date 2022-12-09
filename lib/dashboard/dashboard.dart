@@ -66,7 +66,7 @@ class DashboardPage extends StatelessWidget {
                                   width: 200,
                                   child: Image.asset(
                                       "assets/foto sekolah dashboard.png",
-                                      fit: BoxFit.fill,),
+                                      fit: BoxFit.cover,),
                                 ),
                                 // SizedBox(
                                 //   width: 10,
@@ -140,7 +140,7 @@ class DashboardPage extends StatelessWidget {
                                       width: 200,
                                       child: Image.asset(
                                           "assets/foto sekolah dashboard.png",
-                                          fit: BoxFit.fill,),
+                                          fit: BoxFit.cover,),
                                     ),
                                     // SizedBox(
                                     //   width: 20,
