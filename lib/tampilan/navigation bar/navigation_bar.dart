@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:project/dashboard/dashboard.dart';
-import 'package:project/manajemen akun/manajemen_akun.dart';
+import 'package:project/tampilan/dashboard/dashboard.dart';
+import 'package:project/tampilan/manajemen akun/manajemen_akun.dart';
 
 class NavigationBarFirst extends StatefulWidget {
   const NavigationBarFirst({Key? key}) : super(key: key);

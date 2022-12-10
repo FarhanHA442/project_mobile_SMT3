@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project/berita/berita.dart';
+import 'package:project/tampilan/dashboard/berita.dart';
 import 'package:project/fonts/fonts.dart';
 
 class DashboardPage extends StatelessWidget {

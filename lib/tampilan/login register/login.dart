@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project/tampilan/dashboard/berita.dart';
 import 'package:project/fonts/fonts.dart';
-import 'package:project/login/login.dart';
+import 'package:project/tampilan/navigation bar/navigation_bar.dart';
+import 'package:project/tampilan/login register/register.dart';
 
-class RegisterPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<LoginPage> {
   bool _isObscure = true;
-  var _value = "-1";
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size.width;
@@ -33,8 +34,15 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(
               height: 100,
             ),
+            Image.asset(
+              'assets/logo ds.png',
+              width: 186,
+              height: 180,
+            ),
+            SizedBox(
+              height: 30,
+            ),
             Expanded(
-              //agar bisa full sampai bawah
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -49,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 20,
                     ),
                     Text(
-                      'DAFTAR',
+                      'LOGIN',
                       style: Signika.copyWith(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
@@ -59,74 +67,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 20,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      child: TextField(
-                          decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                        ),
-                        hintText: 'Masukkan NISN',
-                        labelText: 'NISN',
-                      )),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      child: TextField(
-                          decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                        ),
-                        hintText: 'Masukkan Nama',
-                        labelText: 'Nama',
-                      )),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      child: DropdownButtonFormField(
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: TextField(
+                            decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(13),
+                            borderRadius: BorderRadius.circular(17),
                           ),
-                        ),
-                        value: _value,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text('\tJenis Kelamin'),
-                            value: "-1",
-                          ),
-                          DropdownMenuItem(
-                            child: Text('\tLaki-laki'),
-                            value: "1",
-                          ),
-                          DropdownMenuItem(
-                            child: Text('\tPerempuan'),
-                            value: "2",
-                          ),
-                        ],
-                        onChanged: (v) {},
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      child: TextField(
-                          decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                        ),
-                        hintText: 'Masukkan No. HP/WA',
-                        labelText: 'No. HP/WA',
-                      )),
-                    ),
+                          hintText: 'Masukkan NISN',
+                          labelText: 'NISN',
+                        ))),
                     SizedBox(
                       height: 10,
                     ),
@@ -153,31 +102,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           )),
                     ),
                     SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      child: TextField(
-                          obscureText: _isObscure,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(17),
-                            ),
-                            hintText: 'Konfirmasi Password',
-                            labelText: 'KONFIRMASI PASSWORD',
-                            suffixIcon: IconButton(
-                              icon: Icon(_isObscure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
-                              onPressed: (() {
-                                setState(() {
-                                  _isObscure = !_isObscure;
-                                });
-                              }),
-                            ),
-                          )),
-                    ),
-                    SizedBox(
                       height: 30,
                     ),
                     Container(
@@ -191,10 +115,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
+                                  builder: (context) => NavigationBarFirst()));
                         },
                         child: Text(
-                          "Daftar",
+                          "Masuk",
                           style: Signika.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -209,7 +133,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Sudah memiliki akun?",
+                          "Belum memiliki akun?",
                           style: Signika.copyWith(
                               fontSize: 12, color: Colors.black),
                         ),
@@ -218,10 +142,10 @@ class _RegisterPageState extends State<RegisterPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LoginPage()));
+                                      builder: (context) => RegisterPage()));
                             },
                             child: Text(
-                              "Masuk",
+                              "Daftar",
                               style: Signika.copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,

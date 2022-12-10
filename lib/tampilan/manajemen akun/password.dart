@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/fonts/fonts.dart';
-import 'package:project/manajemen%20akun/manajemen_akun.dart';
-import 'package:project/navigation%20bar/navigation_bar.dart';
+import 'package:project/tampilan/manajemen%20akun/manajemen_akun.dart';
+import 'package:project/tampilan/navigation%20bar/navigation_bar.dart';
 
 class PasswordPage extends StatelessWidget {
   @override

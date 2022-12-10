@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project/data%20diri/data_diri.dart';
+import 'package:project/tampilan/manajemen akun/data_diri.dart';
 import 'package:project/fonts/fonts.dart';
-import 'package:project/login/login.dart';
-import 'package:project/navigation%20bar/navigation_bar.dart';
-import 'package:project/password/password.dart';
-import 'package:project/status%20alumni/status_alumni.dart';
+import 'package:project/tampilan/login register/login.dart';
+import 'package:project/tampilan/navigation%20bar/navigation_bar.dart';
+import 'package:project/tampilan/manajemen akun/password.dart';
+import 'package:project/tampilan/manajemen akun/status_alumni.dart';
 
 class ManajemenAkunPage extends StatelessWidget {
   @override

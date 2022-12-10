@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/fonts/fonts.dart';
 import 'dart:async';
-import 'package:project/login/login.dart';
+import 'package:project/tampilan/login register/login.dart';
 import 'package:flutter/services.dart';
 
 void main() {

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project/dashboard/dashboard.dart';
 import 'package:project/fonts/fonts.dart';
-import 'package:project/navigation bar/navigation_bar.dart';
-import 'package:project/register/register.dart';
+import 'package:project/tampilan/login register/login.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   bool _isObscure = true;
+  var _value = "-1";
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size.width;
@@ -34,15 +33,8 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 100,
             ),
-            Image.asset(
-              'assets/logo ds.png',
-              width: 186,
-              height: 180,
-            ),
-            SizedBox(
-              height: 30,
-            ),
             Expanded(
+              //agar bisa full sampai bawah
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -57,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20,
                     ),
                     Text(
-                      'LOGIN',
+                      'DAFTAR',
                       style: Signika.copyWith(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
@@ -67,15 +59,74 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20,
                     ),
                     Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
-                        child: TextField(
-                            decoration: InputDecoration(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: TextField(
+                          decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                        hintText: 'Masukkan NISN',
+                        labelText: 'NISN',
+                      )),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: TextField(
+                          decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                        hintText: 'Masukkan Nama',
+                        labelText: 'Nama',
+                      )),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: DropdownButtonFormField(
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(17),
+                            borderRadius: BorderRadius.circular(13),
                           ),
-                          hintText: 'Masukkan NISN',
-                          labelText: 'NISN',
-                        ))),
+                        ),
+                        value: _value,
+                        items: [
+                          DropdownMenuItem(
+                            child: Text('\tJenis Kelamin'),
+                            value: "-1",
+                          ),
+                          DropdownMenuItem(
+                            child: Text('\tLaki-laki'),
+                            value: "1",
+                          ),
+                          DropdownMenuItem(
+                            child: Text('\tPerempuan'),
+                            value: "2",
+                          ),
+                        ],
+                        onChanged: (v) {},
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: TextField(
+                          decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                        hintText: 'Masukkan No. HP/WA',
+                        labelText: 'No. HP/WA',
+                      )),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
@@ -102,6 +153,31 @@ class _LoginPageState extends State<LoginPage> {
                           )),
                     ),
                     SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      child: TextField(
+                          obscureText: _isObscure,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(17),
+                            ),
+                            hintText: 'Konfirmasi Password',
+                            labelText: 'KONFIRMASI PASSWORD',
+                            suffixIcon: IconButton(
+                              icon: Icon(_isObscure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
+                              onPressed: (() {
+                                setState(() {
+                                  _isObscure = !_isObscure;
+                                });
+                              }),
+                            ),
+                          )),
+                    ),
+                    SizedBox(
                       height: 30,
                     ),
                     Container(
@@ -115,10 +191,10 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => NavigationBarFirst()));
+                                  builder: (context) => LoginPage()));
                         },
                         child: Text(
-                          "Masuk",
+                          "Daftar",
                           style: Signika.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -133,7 +209,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Belum memiliki akun?",
+                          "Sudah memiliki akun?",
                           style: Signika.copyWith(
                               fontSize: 12, color: Colors.black),
                         ),
@@ -142,10 +218,10 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => RegisterPage()));
+                                      builder: (context) => LoginPage()));
                             },
                             child: Text(
-                              "Daftar",
+                              "Masuk",
                               style: Signika.copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
