@@ -44,62 +44,9 @@ class DashboardPage extends StatelessWidget {
                             fontWeight: FontWeight.bold)),
                   ]),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                alignment: Alignment.topCenter,
-                child: Row(
-                  children: [
-                    InkWell(
-                      // onTap: onTap,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        margin: EdgeInsets.only(right: 20),
-                        height: categoryHeight,
-                        child: Card(
-                          child: Container(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  width: 200,
-                                  child: Image.asset(
-                                      "assets/foto sekolah dashboard.png",
-                                      fit: BoxFit.cover,),
-                                ),
-                                // SizedBox(
-                                //   width: 10,
-                                // ),
-                                Expanded(
-                                  child: Container(
-                                    margin: EdgeInsets.only(top: 20),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        Text(
-                                          "Judul",
-                                          style: Signika.copyWith(
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            SizedBox(
+              height: 20,
             ),
-            //jarak berita baru dan berita lama
             Expanded(
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
@@ -120,10 +67,11 @@ class DashboardPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: SingleChildScrollView(
+                child: ListView(
                   scrollDirection: Axis.vertical,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  children: [
+                    Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
                     alignment: Alignment.topCenter,
                     child: Column(
                       children: [
@@ -185,9 +133,301 @@ class DashboardPage extends StatelessWidget {
                             ),
                           ),
                         ),
+                        InkWell(
+                          // onTap: onTap,
+                          child: Container(
+                            // margin: EdgeInsets.all(10),
+                            child: Card(
+                              child: Container(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      width: 200,
+                                      child: Image.asset(
+                                          "assets/foto sekolah dashboard.png",
+                                          fit: BoxFit.cover,),
+                                    ),
+                                    // SizedBox(
+                                    //   width: 20,
+                                    // ),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.only(top: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              "Judul",
+                                              style: Signika.copyWith(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.calendar_today,
+                                                  size: 12,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text("Tanggal"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          // onTap: onTap,
+                          child: Container(
+                            // margin: EdgeInsets.all(10),
+                            child: Card(
+                              child: Container(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      width: 200,
+                                      child: Image.asset(
+                                          "assets/foto sekolah dashboard.png",
+                                          fit: BoxFit.cover,),
+                                    ),
+                                    // SizedBox(
+                                    //   width: 20,
+                                    // ),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.only(top: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              "Judul",
+                                              style: Signika.copyWith(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.calendar_today,
+                                                  size: 12,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text("Tanggal"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          // onTap: onTap,
+                          child: Container(
+                            // margin: EdgeInsets.all(10),
+                            child: Card(
+                              child: Container(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      width: 200,
+                                      child: Image.asset(
+                                          "assets/foto sekolah dashboard.png",
+                                          fit: BoxFit.cover,),
+                                    ),
+                                    // SizedBox(
+                                    //   width: 20,
+                                    // ),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.only(top: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              "Judul",
+                                              style: Signika.copyWith(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.calendar_today,
+                                                  size: 12,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text("Tanggal"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          // onTap: onTap,
+                          child: Container(
+                            // margin: EdgeInsets.all(10),
+                            child: Card(
+                              child: Container(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      width: 200,
+                                      child: Image.asset(
+                                          "assets/foto sekolah dashboard.png",
+                                          fit: BoxFit.cover,),
+                                    ),
+                                    // SizedBox(
+                                    //   width: 20,
+                                    // ),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.only(top: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              "Judul",
+                                              style: Signika.copyWith(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.calendar_today,
+                                                  size: 12,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text("Tanggal"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          // onTap: onTap,
+                          child: Container(
+                            // margin: EdgeInsets.all(10),
+                            child: Card(
+                              child: Container(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      width: 200,
+                                      child: Image.asset(
+                                          "assets/foto sekolah dashboard.png",
+                                          fit: BoxFit.cover,),
+                                    ),
+                                    // SizedBox(
+                                    //   width: 20,
+                                    // ),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.only(top: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            Text(
+                                              "Judul",
+                                              style: Signika.copyWith(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.calendar_today,
+                                                  size: 12,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text("Tanggal"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
+                  ],
+                  
                 ),
               ),
             ),
