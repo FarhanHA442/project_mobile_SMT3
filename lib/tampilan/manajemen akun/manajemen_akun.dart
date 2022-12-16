@@ -27,7 +27,7 @@ class ManajemenAkunPage extends StatelessWidget {
                   SizedBox(
                     height: 51,
                   ),
-                  Text("Akun",
+                  Text("Manajemen Akun",
                       style: Signika.copyWith(
                           fontSize: 25,
                           color: Colors.black,

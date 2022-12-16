@@ -101,21 +101,21 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
                 labelText: '\tInstansi',
               )),
             ),
-            SizedBox(
-              height: 15,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
-              child: TextField(
-                  decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(vertical: 15.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(13),
-                ),
-                // hintText: '\tFile Pendukung',
-                labelText: '\tFile Pendukung',
-              )),
-            ),
+            // SizedBox(
+            //   height: 15,
+            // ),
+            // Container(
+            //   margin: EdgeInsets.only(left: 10, right: 10),
+            //   child: TextField(
+            //       decoration: InputDecoration(
+            //     contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+            //     border: OutlineInputBorder(
+            //       borderRadius: BorderRadius.circular(13),
+            //     ),
+            //     // hintText: '\tFile Pendukung',
+            //     labelText: '\tFile Pendukung',
+            //   )),
+            // ),
             SizedBox(
               height: 25,
             ),
@@ -130,7 +130,7 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Selected file:',
+                          "File yang dipilih:",
                           style: Signika.copyWith(
                               fontSize: 16, color: Colors.black),
                         ),
@@ -162,7 +162,7 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
                       result = await FilePicker.platform
                           .pickFiles(allowMultiple: true);
                       if (result == null) {
-                        print("No file selected");
+                        print("Tidak ada file yang dipilih");
                       } else {
                         setState(() {});
                         result?.files.forEach((element) {
@@ -171,7 +171,7 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
                       }
                     },
                     child: Text(
-                      "File Picker",
+                      "Pilih File",
                       style: Signika.copyWith(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

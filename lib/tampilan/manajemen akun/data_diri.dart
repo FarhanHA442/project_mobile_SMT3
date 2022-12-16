@@ -30,6 +30,7 @@ class DataDiriPage extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         child: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
             Container(
               margin: EdgeInsets.only(left: 10),

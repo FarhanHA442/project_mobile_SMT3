@@ -16,9 +16,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size.width;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -29,6 +29,8 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -42,13 +44,10 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 30,
             ),
-            Expanded(
-              child: Container(
+            Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15)),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 width: mediaQuery * 0.90,
                 child: Column(
@@ -149,15 +148,18 @@ class _LoginPageState extends State<LoginPage> {
                               style: Signika.copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
-                                  color: Color.fromRGBO(19, 52, 22, 1)),
+                                  color: Colors.black,
+                                  decoration: TextDecoration.underline,
+                                  decorationThickness: 5,),
                             )),
                       ],
                     ),
                   ],
                 ),
               ),
-            ),
+            
           ],
+        ),
         ),
       ),
     );
