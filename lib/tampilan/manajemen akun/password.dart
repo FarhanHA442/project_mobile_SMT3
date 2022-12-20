@@ -7,8 +7,14 @@ import 'package:project/tampilan/navigation%20bar/navigation_bar.dart';
 class PasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           leading: IconButton(
@@ -56,7 +62,6 @@ class PasswordPage extends StatelessWidget {
                 margin: EdgeInsets.only(left: 10, right: 10),
                 child: TextField(
                     decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(13),
                   ),
@@ -71,7 +76,6 @@ class PasswordPage extends StatelessWidget {
                 margin: EdgeInsets.only(left: 10, right: 10),
                 child: TextField(
                     decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(13),
                   ),
@@ -86,7 +90,6 @@ class PasswordPage extends StatelessWidget {
                 margin: EdgeInsets.only(left: 10, right: 10),
                 child: TextField(
                     decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(13),
                   ),

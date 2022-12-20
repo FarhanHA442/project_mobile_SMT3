@@ -18,7 +18,14 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if(!currentFocus.hasPrimaryFocus){
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
@@ -63,7 +70,6 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
               margin: EdgeInsets.only(left: 10, right: 10),
               child: DropdownButtonFormField(
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(13),
                   ),
@@ -93,7 +99,6 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
               margin: EdgeInsets.only(left: 10, right: 10),
               child: TextField(
                   decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(13),
                 ),
@@ -108,7 +113,7 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
             //   margin: EdgeInsets.only(left: 10, right: 10),
             //   child: TextField(
             //       decoration: InputDecoration(
-            //     contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+
             //     border: OutlineInputBorder(
             //       borderRadius: BorderRadius.circular(13),
             //     ),
@@ -241,6 +246,7 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
           ],
         ),
       ),
+    ),
     );
   }
 }
