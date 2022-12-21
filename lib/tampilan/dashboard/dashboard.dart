@@ -13,7 +13,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   apiBerita api_berita = apiBerita();
   late Future<BeritaData> beritaData;
-  String imageBeritaUrl = 'http://10.10.172.71/pedansial/img/berita_image/';
+  String imageBeritaUrl = 'http://192.168.1.6/pendasial_web/img/berita_image/';
 
   @override
   void initState() {
@@ -113,80 +113,6 @@ class _DashboardPageState extends State<DashboardPage> {
                     }
                   },
                 ),
-                // ListView(
-                //   scrollDirection: Axis.vertical,
-                //   children: [
-                //     Container(
-                //       margin: EdgeInsets.only(top: 10, bottom: 10),
-                //       alignment: Alignment.topCenter,
-                //       child: Column(
-                //         children: [
-                //           InkWell(
-                //             // onTap: onTap,
-                //             child: Container(
-                //               // margin: EdgeInsets.all(10),
-                //               child: Card(
-                //                 child: Container(
-                //                   child: Row(
-                //                     crossAxisAlignment:
-                //                         CrossAxisAlignment.start,
-                //                     children: <Widget>[
-                //                       Container(
-                //                         width: 200,
-                //                         child: Image.asset(
-                //                           "assets/foto sekolah dashboard.png",
-                //                           fit: BoxFit.cover,
-                //                         ),
-                //                       ),
-                //                       // SizedBox(
-                //                       //   width: 20,
-                //                       // ),
-                //                       Expanded(
-                //                         child: Container(
-                //                           margin: EdgeInsets.only(top: 20),
-                //                           child: Column(
-                //                             crossAxisAlignment:
-                //                                 CrossAxisAlignment.start,
-                //                             mainAxisSize: MainAxisSize.min,
-                //                             children: <Widget>[
-                //                               Text(
-                //                                 "Judul",
-                //                                 style: Signika.copyWith(
-                //                                     fontSize: 15,
-                //                                     color: Colors.black),
-                //                               ),
-                //                               SizedBox(
-                //                                 height: 10,
-                //                               ),
-                //                               Row(
-                //                                 mainAxisAlignment:
-                //                                     MainAxisAlignment.center,
-                //                                 children: <Widget>[
-                //                                   Icon(
-                //                                     Icons.calendar_today,
-                //                                     size: 12,
-                //                                   ),
-                //                                   SizedBox(
-                //                                     width: 5,
-                //                                   ),
-                //                                   Text("Tanggal"),
-                //                                 ],
-                //                               ),
-                //                             ],
-                //                           ),
-                //                         ),
-                //                       ),
-                //                     ],
-                //                   ),
-                //                 ),
-                //               ),
-                //             ),
-                //           )
-                //         ],
-                //       ),
-                //     ),
-                //   ],
-                // ),
               ),
             ),
           ],
