@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project/model/BeritaData.dart';
 import 'package:project/tampilan/dashboard/dashboard.dart';
 import 'package:project/fonts/fonts.dart';
 import 'package:project/tampilan/navigation%20bar/navigation_bar.dart';
 
 class BeritaPage extends StatelessWidget {
+  final BeritaDataList berita;
+
+  const BeritaPage({Key? key, required this.berita}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     final double categoryHeight =
@@ -36,69 +41,7 @@ class BeritaPage extends StatelessWidget {
         color: Colors.white,
         width: double.infinity,
         height: double.infinity,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 10),
-              alignment: Alignment.topLeft,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Come on Alumni 2021",
-                        style: Signika.copyWith(
-                            fontSize: 25,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold)),
-                  ]),
-            ),
-            SizedBox(height: 20),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              child: FittedBox(
-                fit: BoxFit.fill,
-                alignment: Alignment.topLeft,
-                child: Row(
-                  children: [
-                    Row(
-                      children: [
-                        Image.asset('assets/foto sekolah dashboard.png',
-                            width: MediaQuery.of(context).size.width,
-                            fit: BoxFit.fill),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: categoryHeight,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      child: Text(
-                        'TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-                        style:
-                            Signika.copyWith(fontSize: 16, color: Colors.black),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+        child: Text(berita.deskripsi_berita),
       ),
     );
   }

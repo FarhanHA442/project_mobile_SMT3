@@ -15,6 +15,15 @@ class BeritaData {
       });
     }
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['data'] = this.data;
+    if (this.beritaList != null) {
+      data['beritaList'] = this.beritaList.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
 class BeritaDataList {
@@ -41,5 +50,16 @@ class BeritaDataList {
     thumbnail_berita = json['thumbnail_berita'];
     deskripsi_berita = json['deskripsi'];
     status_berita = json['status_berita'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id_berita'] = this.idBerita;
+    data['judul'] = this.judul;
+    data['tanggal_berita'] = this.tanggal_berita;
+    data['thumbnail_berita'] = this.thumbnail_berita;
+    data['deskripsi_berita'] = this.deskripsi_berita;
+    data['status_berita'] = this.status_berita;
+    return data;
   }
 }

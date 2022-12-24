@@ -13,7 +13,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   apiBerita api_berita = apiBerita();
   late Future<BeritaData> beritaData;
-  String imageBeritaUrl = 'http://192.168.1.6/pendasial_web/img/berita_image/';
+  String imageBeritaUrl = 'http://192.168.1.4/pendasial_web/img/berita_image/';
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _DashboardPageState extends State<DashboardPage> {
         width: double.infinity,
         height: double.infinity,
         child: Column(
-          children: [
+          children: <Widget>[
             SizedBox(
               height: 30,
             ),
@@ -90,20 +90,25 @@ class _DashboardPageState extends State<DashboardPage> {
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.hasData) {
                       return ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (BuildContext context, int index) {
-                            return BeritaItems(
-                                judul:
-                                    '${snapshot.data.beritaList[index].judul}',
-                                thumbnail_berita:
-                                    '$imageBeritaUrl${snapshot.data.beritaList[index].thumbnail_berita}',
-                                tanggal_berita:
-                                    '${snapshot.data.beritaList[index].tanggal_berita}',
-                                onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => BeritaPage()));
-                                });
-                          });
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (BuildContext context, int index) {
+                          print('Returned ${index} times');
+                          return BeritaItems(
+                              judul: '${snapshot.data.beritaList[index].judul}',
+                              thumbnail_berita:
+                                  '${imageBeritaUrl}${snapshot.data.beritaList[index].thumbnail_berita}',
+                              tanggal_berita:
+                                  '${snapshot.data.beritaList[index].tanggal_berita}',
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => BeritaPage(
+                                          berita: snapshot.data.results[index],
+                                        )));
+                              });
+                        },
+                        itemCount: snapshot.data.beritaList.length,
+                      );
                     } else if (snapshot.hasError) {
                       print('Has Error : ${snapshot.error}');
                       return Text("Error");
@@ -126,59 +131,53 @@ class _DashboardPageState extends State<DashboardPage> {
       required String thumbnail_berita,
       required String tanggal_berita,
       required Function()? onTap}) {
-    final double categoryHeight =
-        MediaQuery.of(context).size.height * 0.30 - 50;
-
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        // margin: EdgeInsets.all(10),
+    return Container(
+      margin: EdgeInsets.only(bottom: 10),
+      alignment: Alignment.topCenter,
+      child: InkWell(
+        onTap: onTap,
         child: Card(
-          child: Container(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  width: 200,
-                  child: Image.network(
-                    thumbnail_berita,
-                    fit: BoxFit.cover,
-                  ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: 200,
+                child: Image.network(
+                  thumbnail_berita,
+                  fit: BoxFit.cover,
                 ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text(
+                      judul,
+                      style:
+                          Signika.copyWith(fontSize: 15, color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
                       children: <Widget>[
-                        Text(
-                          judul,
-                          style: Signika.copyWith(
-                              fontSize: 15, color: Colors.black),
+                        Icon(
+                          Icons.calendar_today,
+                          size: 12,
                         ),
                         SizedBox(
-                          height: 10,
+                          width: 3,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.calendar_today,
-                              size: 12,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(tanggal_berita),
-                          ],
-                        ),
+                        Text(tanggal_berita),
                       ],
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
