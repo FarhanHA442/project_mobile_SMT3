@@ -31,7 +31,7 @@ class DataDiriPage extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           elevation: 0,
         ),
         body: Container(

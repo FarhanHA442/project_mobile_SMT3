@@ -229,9 +229,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Text(
                                 "Masuk",
                                 style: Signika.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromRGBO(19, 52, 22, 1)),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  decoration: TextDecoration.underline,
+                                  decorationThickness: 5,
+                                ),
                               )),
                         ],
                       ),

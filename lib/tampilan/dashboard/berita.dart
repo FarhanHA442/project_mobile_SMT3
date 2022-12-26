@@ -4,12 +4,14 @@ import 'package:project/model/BeritaData.dart';
 import 'package:project/tampilan/dashboard/dashboard.dart';
 import 'package:project/fonts/fonts.dart';
 import 'package:project/tampilan/navigation%20bar/navigation_bar.dart';
+import 'package:project/data/api_Berita.dart';
 
 class BeritaPage extends StatelessWidget {
   final BeritaDataList berita;
+  late Future<BeritaData> beritaData;
+  String imageBeritaUrl = 'http://192.168.98.191/pendasial_web/img/berita_image/';
+  BeritaPage({Key? key, required this.berita}) : super(key: key);
 
-  const BeritaPage({Key? key, required this.berita}) : super(key: key);
-  
   @override
   Widget build(BuildContext context) {
     final double categoryHeight =
@@ -34,14 +36,65 @@ class BeritaPage extends StatelessWidget {
               fontSize: 24,
               color: Colors.black,
             )),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: Container(
         color: Colors.white,
         width: double.infinity,
         height: double.infinity,
-        child: Text(berita.deskripsi_berita),
+        child: ListView(
+          children: [
+            Container(
+              height: 1,
+              width: 376,
+              color: Colors.black54,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10),
+              alignment: Alignment.topCenter,
+              child: Column(
+                children: [
+                  Text(
+                    berita.judul,
+                    style: Signika.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10, right: 10),
+              child: Image.network(
+                '${imageBeritaUrl}${berita.thumbnail_berita}',
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10),
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: [
+                  Text(
+                    berita.deskripsi_berita,
+                    style: Signika.copyWith(fontSize: 16, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

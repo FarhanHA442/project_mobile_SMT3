@@ -38,7 +38,7 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
             color: Colors.black,
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: Container(

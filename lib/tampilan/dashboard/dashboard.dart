@@ -13,7 +13,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   apiBerita api_berita = apiBerita();
   late Future<BeritaData> beritaData;
-  String imageBeritaUrl = 'http://192.168.1.4/pendasial_web/img/berita_image/';
+  String imageBeritaUrl = 'http://192.168.98.191/pendasial_web/img/berita_image/';
 
   @override
   void initState() {
@@ -67,10 +67,10 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             Expanded(
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
+                // width: MediaQuery.of(context).size.width * 0.9,
                 margin: EdgeInsets.only(
-                  right: 20,
-                  left: 20,
+                  right: 10,
+                  left: 10,
                 ),
                 height: categoryHeight,
                 decoration: BoxDecoration(
@@ -103,7 +103,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => BeritaPage(
-                                          berita: snapshot.data.results[index],
+                                          berita: snapshot.data.beritaList[index],
                                         )));
                               });
                         },
