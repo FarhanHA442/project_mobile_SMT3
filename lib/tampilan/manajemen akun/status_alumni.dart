@@ -14,6 +14,7 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
   //dropdown
   var _value = "-1";
   //filepicker
+  var txtFilePicker = TextEditingController();
   FilePickerResult? result;
 
   @override
@@ -103,24 +104,27 @@ class _StatusAlumniPageState extends State<StatusAlumniPage> {
                   borderRadius: BorderRadius.circular(13),
                 ),
                 hintText: '\tMasukkan Instansi',
+                hintStyle: TextStyle(color: Colors.black),
+                labelStyle: TextStyle(color: Colors.black),
                 labelText: '\tInstansi',
               )),
             ),
-            // SizedBox(
-            //   height: 15,
-            // ),
-            // Container(
-            //   margin: EdgeInsets.only(left: 10, right: 10),
-            //   child: TextField(
-            //       decoration: InputDecoration(
-
-            //     border: OutlineInputBorder(
-            //       borderRadius: BorderRadius.circular(13),
-            //     ),
-            //     // hintText: '\tFile Pendukung',
-            //     labelText: '\tFile Pendukung',
-            //   )),
-            // ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, right: 150),
+              child: TextFormField(
+                readOnly: true,
+                controller: txtFilePicker,
+                  decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                // hintText: '\tFile Pendukung',
+                labelText: '\tFile Pendukung',
+              )),
+            ),
             SizedBox(
               height: 25,
             ),

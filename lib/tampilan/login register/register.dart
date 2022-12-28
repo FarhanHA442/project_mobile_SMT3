@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/fonts/fonts.dart';
@@ -9,7 +11,26 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  var nisn, nama, jenis_kelamin, nomor, password, konfirmasi_password;
+  final _key = new GlobalKey<FormState>();
+
+  check() {
+    final form = _key.currentState;
+    if (form!.validate()) {
+      form.save();
+      register();
+    }
+  }
+
+  register() async {
+    final response = await http.post(Uri.parse("http://192.168.1.6/pedansial/src/api/controllers/AlumniController.php"));
+    final data = jsonDecode(response.body);
+    print(data);
+  }
+
+  //hidden password
   bool _isObscure = true;
+  //dropdown
   var _value = "-1";
   @override
   Widget build(BuildContext context) {
