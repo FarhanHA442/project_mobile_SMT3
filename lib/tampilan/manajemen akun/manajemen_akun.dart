@@ -106,43 +106,45 @@ class ManajemenAkunPage extends StatelessWidget {
                       onPressed: () => showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
-                              title: Text(
-                                "Logout",
-                                style: Signika.copyWith(
-                                    fontSize: 20, color: Colors.black),
-                              ),
                               content: Text(
                                 "Apakah yakin keluar aplikasi?",
                                 style: Signika.copyWith(
                                     fontSize: 20, color: Colors.black),
                               ),
                               actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => LoginPage()));
-                                  },
-                                  child: Text(
-                                    "Iya",
-                                    style: Signika.copyWith(
-                                        fontSize: 20, color: Colors.black),
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                NavigationBarSecond()));
-                                  },
-                                  child: Text(
-                                    "Tidak",
-                                    style: Signika.copyWith(
-                                        fontSize: 20, color: Colors.black),
-                                  ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LoginPage()));
+                                      },
+                                      child: Text(
+                                        "Iya",
+                                        style: Signika.copyWith(
+                                            fontSize: 20, color: Colors.black),
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NavigationBarSecond()));
+                                      },
+                                      child: Text(
+                                        "Tidak",
+                                        style: Signika.copyWith(
+                                            fontSize: 20, color: Colors.black),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

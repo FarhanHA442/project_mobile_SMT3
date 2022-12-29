@@ -82,7 +82,7 @@ class BeritaPage extends StatelessWidget {
               height: 5,
             ),
             Container(
-              margin: EdgeInsets.only(left: 10, top: 10),
+              margin: EdgeInsets.only(left: 10, top: 10, bottom: 20, right: 2),
               alignment: Alignment.topLeft,
               child: Column(
                 children: [
