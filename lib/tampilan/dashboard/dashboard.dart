@@ -13,7 +13,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   apiBerita api_berita = apiBerita();
   late Future<BeritaData> beritaData;
-  String imageBeritaUrl = 'http://192.168.98.191/pendasial_web/img/berita_image/';
+  String imageBeritaUrl = 'http://10.10.3.148/pendasial_web/img/berita_image/';
 
   @override
   void initState() {

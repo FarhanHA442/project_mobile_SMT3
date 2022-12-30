@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/tampilan/dashboard/berita.dart';
 import 'package:project/fonts/fonts.dart';
+import 'package:project/tampilan/dashboard/dashboard.dart';
 import 'package:project/tampilan/navigation bar/navigation_bar.dart';
 import 'package:project/tampilan/login register/register.dart';
 
@@ -13,31 +14,35 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var nisn, password;
-  final _key = new GlobalKey<FormState>();
-
-  check() {
-    final form = _key.currentState;
-    if (form!.validate()) {
-      form.save();
-      login();
-    }
-  }
-
-  login() async {
-    print("nisn = " + nisn);
-    print("password= " + password);
-    final response = await http.post(Uri.parse("http://192.168.1.6/pendasial_web/src/api/controllers/AlumniController.php"),
-    headers: {'Content-Type': 'application/json; charset=UTF-8'},
-    body: jsonEncode({
-      "nisn" : nisn,
-      "password" : password,
-      "submit_login" : true
-    }));
-    final data = jsonDecode(response.body);
-    print("Data" + data);
-    if (data['code']== 200) {
-      print("Berhasil Login");
+  //controllerlogin
+  final TextEditingController _nisnController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  Future<void> login(String usernisn, String userpassword) async {
+    if (_nisnController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      var data = {
+        'nisn': usernisn,
+        'password': userpassword,
+        'submit_login': 'true',
+      };
+      var url = 'http://10.10.3.148/pendasial_web/src/api/controllers/AlumniController.php';
+      var response = await http.post(
+          Uri.parse(url
+              ),
+          // headers: {"Content-Type": "application/json"},
+          body: json.encode(data));
+      print(response.body);
+      var bodyData = response.body;
+      var bodyDataDecode = jsonDecode(bodyData);
+      print(bodyDataDecode);
+      if (response.statusCode == 200) {
+        Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NavigationBarFirst()));
+      } else {
+        // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Invalid")));
+      }
     }
   }
 
@@ -67,154 +72,151 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
-          child: Form(
-            key: _key,
-            child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 100,
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                Image.asset(
+                  'assets/logo ds.png',
+                  width: 186,
+                  height: 180,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
-                  Image.asset(
-                    'assets/logo ds.png',
-                    width: 186,
-                    height: 180,
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    width: mediaQuery * 0.90,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'LOGIN',
-                          style: Signika.copyWith(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(left: 10, right: 10),
-                            child: TextFormField(
-                                // validator: (e) {
-                                //   if (nisn.isEmpty) {
-                                //     return "Masukkan NISN";
-                                //   }
-                                // },
-                                onSaved: (e) => nisn = e,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(17),
-                                  ),
-                                  hintText: 'Masukkan NISN',
-                                  labelText: 'NISN',
-                                ))),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
+                  width: mediaQuery * 0.90,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'LOGIN',
+                        style: Signika.copyWith(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
                           margin: EdgeInsets.only(left: 10, right: 10),
                           child: TextFormField(
-                              // validator: (e) {
-                              //   if (password.isEmpty) {
-                              //     return "Masukkan Password";
-                              //   }
-                              // },
-                              onSaved: (e) => password = e,
-                              obscureText: _isObscure,
+                              controller: _nisnController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(17),
                                 ),
-                                hintText: 'Masukkan Password',
-                                labelText: 'PASSWORD',
-                                suffixIcon: IconButton(
-                                  icon: Icon(_isObscure
-                                      ? Icons.visibility
-                                      : Icons.visibility_off),
-                                  onPressed: (() {
-                                    setState(() {
-                                      _isObscure = !_isObscure;
-                                    });
-                                  }),
-                                ),
-                              )),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                          width: 200,
-                          height: 45,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Color.fromRGBO(68, 106, 70, 1),
-                            ),
-                            onPressed: () {
-                              check();
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          NavigationBarFirst()));
-                            },
-                            child: Text(
-                              "Masuk",
-                              style: Signika.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
+                                hintText: 'Masukkan NISN',
+                                labelText: 'NISN',
+                              ))),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: TextFormField(
+                            controller: _passwordController,
+                            obscureText: _isObscure,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(17),
+                              ),
+                              hintText: 'Masukkan Password',
+                              labelText: 'PASSWORD',
+                              suffixIcon: IconButton(
+                                icon: Icon(_isObscure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                                onPressed: (() {
+                                  setState(() {
+                                    _isObscure = !_isObscure;
+                                  });
+                                }),
+                              ),
+                            )),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        width: 200,
+                        height: 45,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromRGBO(68, 106, 70, 1),
+                          ),
+                          onPressed: () {
+                            try{
+                              String usernisn = _nisnController.text;
+                              String userpassword = _passwordController.text;
+                              if(usernisn.isNotEmpty && userpassword.isNotEmpty){
+                                login(usernisn, userpassword);
+                              }
+
+                            }catch(err){
+                              print(err);
+
+                            }
+                            // login();
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             NavigationBarFirst()));
+                          },
+                          child: Text(
+                            "Masuk",
+                            style: Signika.copyWith(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Belum memiliki akun?",
-                              style: Signika.copyWith(
-                                  fontSize: 12, color: Colors.black),
-                            ),
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              RegisterPage()));
-                                },
-                                child: Text(
-                                  "Daftar",
-                                  style: Signika.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    decoration: TextDecoration.underline,
-                                    decorationThickness: 5,
-                                  ),
-                                )),
-                          ],
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Belum memiliki akun?",
+                            style: Signika.copyWith(
+                                fontSize: 12, color: Colors.black),
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => RegisterPage()));
+                              },
+                              child: Text(
+                                "Daftar",
+                                style: Signika.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  decoration: TextDecoration.underline,
+                                  decorationThickness: 5,
+                                ),
+                              )),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
