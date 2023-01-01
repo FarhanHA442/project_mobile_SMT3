@@ -7,6 +7,7 @@ import 'package:project/fonts/fonts.dart';
 import 'package:project/tampilan/dashboard/dashboard.dart';
 import 'package:project/tampilan/navigation bar/navigation_bar.dart';
 import 'package:project/tampilan/login register/register.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -17,32 +18,48 @@ class _LoginPageState extends State<LoginPage> {
   //controllerlogin
   final TextEditingController _nisnController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  addPreferences(Map<String, dynamic> data) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('nisn', data['data']['nisn']);
+    prefs.setString('nama', data['data']['nama']);
+    prefs.setString('jenis_kelamin', data['data']['jenis_kelamin']);
+    prefs.setString('nomer_hp', data['data']['nomer_hp']);
+    prefs.setString('alamat', data['data']['alamat']);
+    prefs.setString('tahun_lulusan', data['data']['tahun_lulusan']);
+    prefs.setString(
+        'status_alumni',
+        data['data']['status_alumni'] == null
+            ? ""
+            : data['data']['status_alumni']);
+    prefs.setString('nama_instansi', data['data']['nama_instansi']);
+    prefs.setString('password', data['data']['password']);
+  }
+
   Future<void> login(String usernisn, String userpassword) async {
     if (_nisnController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty) {
-      var data = {
+      Map<String, String> data = {
         'nisn': usernisn,
         'password': userpassword,
         'submit_login': 'true',
       };
-      var url = 'http://10.10.3.148/pendasial_web/src/api/controllers/AlumniController.php';
-      var response = await http.post(
-          Uri.parse(url
-              ),
-          // headers: {"Content-Type": "application/json"},
-          body: json.encode(data));
-      print(response.body);
-      var bodyData = response.body;
-      var bodyDataDecode = jsonDecode(bodyData);
-      print(bodyDataDecode);
+      var url =
+          'http://192.168.1.6/pendasial_web/src/api/controllers/AlumniController.php';
+      var response = await http.post(Uri.parse(url), body: data);
+      Map<String, dynamic> bodyData = jsonDecode(response.body);
+
       if (response.statusCode == 200) {
-        Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NavigationBarFirst()));
-      } else {
-        // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Invalid")));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => NavigationBarFirst()));
+        addPreferences(bodyData);
+      } else if (response.statusCode == 400) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("NISN/Password tidak ditemukan!")));
       }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Isi semua field yang tersedia terlebih dahulu!")));
     }
   }
 
@@ -156,23 +173,9 @@ class _LoginPageState extends State<LoginPage> {
                             primary: Color.fromRGBO(68, 106, 70, 1),
                           ),
                           onPressed: () {
-                            try{
-                              String usernisn = _nisnController.text;
-                              String userpassword = _passwordController.text;
-                              if(usernisn.isNotEmpty && userpassword.isNotEmpty){
-                                login(usernisn, userpassword);
-                              }
-
-                            }catch(err){
-                              print(err);
-
-                            }
-                            // login();
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             NavigationBarFirst()));
+                            String usernisn = _nisnController.text;
+                            String userpassword = _passwordController.text;
+                            login(usernisn, userpassword);
                           },
                           child: Text(
                             "Masuk",

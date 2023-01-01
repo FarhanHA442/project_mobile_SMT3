@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 
 class apiBerita {
   Client http = Client();
-  String url = 'http://10.10.3.148';
+  String url = 'http://192.168.1.6';
   Future<BeritaData> getBeritaData() async {
     String api_url = '$url/pendasial_web/src/api/controllers/BeritaController.php';
     print(api_url);

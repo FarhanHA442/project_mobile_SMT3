@@ -32,7 +32,6 @@ class BeritaDataList {
   late String tanggal_berita;
   late String thumbnail_berita;
   late String deskripsi_berita;
-  late String status_berita;
 
   BeritaDataList({
     required this.idBerita,
@@ -40,7 +39,6 @@ class BeritaDataList {
     required this.tanggal_berita,
     required this.thumbnail_berita,
     required this.deskripsi_berita,
-    required this.status_berita,
   });
 
   BeritaDataList.fromJson(Map<String, dynamic> json) {
@@ -49,7 +47,6 @@ class BeritaDataList {
     tanggal_berita = json['tanggal_berita'];
     thumbnail_berita = json['thumbnail_berita'];
     deskripsi_berita = json['deskripsi'];
-    status_berita = json['status_berita'];
   }
 
   Map<String, dynamic> toJson() {
@@ -59,7 +56,6 @@ class BeritaDataList {
     data['tanggal_berita'] = this.tanggal_berita;
     data['thumbnail_berita'] = this.thumbnail_berita;
     data['deskripsi_berita'] = this.deskripsi_berita;
-    data['status_berita'] = this.status_berita;
     return data;
   }
 }

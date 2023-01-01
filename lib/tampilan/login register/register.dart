@@ -11,27 +11,81 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  var nisn, nama, jenis_kelamin, nomor, password, konfirmasi_password;
+  var jenis_kelamin;
+  final TextEditingController _nisnController = TextEditingController();
+  final TextEditingController _namaController = TextEditingController();
+  final TextEditingController _nomorHPController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordConfirmController =
+      TextEditingController();
+
   final _key = new GlobalKey<FormState>();
 
-  check() {
+  checkForm() {
     final form = _key.currentState;
     if (form!.validate()) {
       form.save();
-      register();
+      register(
+          _nisnController.text,
+          _namaController.text,
+          jenis_kelamin,
+          _nomorHPController.text,
+          _passwordController.text,
+          _passwordConfirmController.text);
     }
   }
 
-  register() async {
-    final response = await http.post(Uri.parse("http://192.168.1.6/pedansial/src/api/controllers/AlumniController.php"));
-    final data = jsonDecode(response.body);
-    print(data);
+  Future<void> register(String nisn, String nama, String jenis_kelamin,
+      String nomor, String password, String passwordConfirm) async {
+    if (_nisnController.text.isNotEmpty &&
+        _namaController.text.isNotEmpty &&
+        jenis_kelamin != "-1" &&
+        _nomorHPController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty &&
+        _passwordConfirmController.text.isNotEmpty) {
+      Map<String, String> data = {
+        'nisn': nisn,
+        'nama_alumni': nama,
+        'jenis_kelamin': jenis_kelamin,
+        'nomer_hp': nomor,
+        'password': password,
+        'confirm_password': passwordConfirm,
+        'submit_registration': 'true',
+      };
+      if (password == passwordConfirm) {
+        var url =
+            'http://192.168.1.6/pendasial_web/src/api/controllers/AlumniController.php';
+        var response = await http.post(Uri.parse(url), body: data);
+
+        var bodyData = jsonDecode(response.body);
+        if (response.statusCode == 200) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => LoginPage()));
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("NISN berhasil terdaftar!")));
+        } else if (response.statusCode == 400) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Siswa tidak berstatus Alumni!")));
+        } else if (response.statusCode == 401) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("NISN tidak ditemukan!")));
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Password tidak sama dengan konfirmasi password!")));
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Isi semua field yang tersedia terlebih dahulu!")));
+    }
   }
 
   //hidden password
   bool _isObscure = true;
+
   //dropdown
   var _value = "-1";
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size.width;
@@ -42,33 +96,35 @@ class _RegisterPageState extends State<RegisterPage> {
           currentFocus.unfocus();
         }
       },
-      child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromRGBO(61, 131, 97, 1),
-                Color.fromRGBO(28, 103, 88, 1)
-              ],
-            ),
+    child: Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(61, 131, 97, 1),
+              Color.fromRGBO(28, 103, 88, 1)
+            ],
           ),
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 100,
+        ),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  width: mediaQuery * 0.90,
+                width: mediaQuery * 0.90,
+                child: Form(
+                  key: _key,
                   child: Column(
                     children: [
                       SizedBox(
@@ -87,13 +143,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         child: TextField(
+                            controller: _nisnController,
                             decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(17),
-                          ),
-                          hintText: 'Masukkan NISN',
-                          labelText: 'NISN',
-                        )),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(17),
+                              ),
+                              hintText: 'Masukkan NISN',
+                              labelText: 'NISN',
+                            )),
                       ),
                       SizedBox(
                         height: 10,
@@ -101,13 +158,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         child: TextField(
+                            controller: _namaController,
                             decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(17),
-                          ),
-                          hintText: 'Masukkan Nama',
-                          labelText: 'Nama',
-                        )),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(17),
+                              ),
+                              hintText: 'Masukkan Nama',
+                              labelText: 'Nama',
+                            )),
                       ),
                       SizedBox(
                         height: 10,
@@ -122,6 +180,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(13),
                             ),
                           ),
+                          onSaved: (e) => jenis_kelamin = e,
                           value: _value,
                           items: [
                             DropdownMenuItem(
@@ -146,13 +205,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         child: TextField(
+                            controller: _nomorHPController,
                             decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(17),
-                          ),
-                          hintText: 'Masukkan No. HP/WA',
-                          labelText: 'No. HP/WA',
-                        )),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(17),
+                              ),
+                              hintText: 'Masukkan No. HP/WA',
+                              labelText: 'No. HP/WA',
+                            )),
                       ),
                       SizedBox(
                         height: 10,
@@ -160,6 +220,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         child: TextField(
+                            controller: _passwordController,
                             obscureText: _isObscure,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -185,6 +246,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         child: TextField(
+                            controller: _passwordConfirmController,
                             obscureText: _isObscure,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -215,10 +277,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             primary: Color.fromRGBO(68, 106, 70, 1),
                           ),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginPage()));
+                            checkForm();
                           },
                           child: Text(
                             "Daftar",
@@ -262,11 +321,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
+    ),
     );
   }
 }

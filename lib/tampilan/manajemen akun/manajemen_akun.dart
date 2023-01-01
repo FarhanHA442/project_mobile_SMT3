@@ -6,8 +6,33 @@ import 'package:project/tampilan/login register/login.dart';
 import 'package:project/tampilan/navigation%20bar/navigation_bar.dart';
 import 'package:project/tampilan/manajemen akun/password.dart';
 import 'package:project/tampilan/manajemen akun/status_alumni.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ManajemenAkunPage extends StatelessWidget {
+class ManajemenAkunPage extends StatefulWidget {
+  @override
+  State<ManajemenAkunPage> createState() => _ManajemenAkunPageState();
+}
+
+class _ManajemenAkunPageState extends State<ManajemenAkunPage> {
+  SharedPrefsLogOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.remove('nisn');
+    prefs.remove('nama');
+    prefs.remove('jenis_kelamin');
+    prefs.remove('nomer_hp');
+    prefs.remove('alamat');
+    prefs.remove('tahun_lulusan');
+    prefs.remove('status_alumni');
+    prefs.remove('nama_instansi');
+    prefs.remove('password');
+
+    ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Berhasil Keluar dari Aplikasi")));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,11 +143,7 @@ class ManajemenAkunPage extends StatelessWidget {
                                   children: [
                                     TextButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginPage()));
+                                        SharedPrefsLogOut();
                                       },
                                       child: Text(
                                         "Iya",
